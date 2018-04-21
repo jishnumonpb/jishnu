@@ -1,0 +1,53 @@
+<?php
+require "connect.php";
+	if(isset($_POST["submit"]))
+{
+$username=$_POST['username'];
+$password=$_POST['password'];
+$sql="select status from login where uname='$username' and password='$password'";
+   $res=mysqli_query($conn,$sql) or die("eror");  
+    while($fetch=mysqli_fetch_array($res))
+   {
+    if($fetch['status']==0)
+       {
+       $_SESSION["logid"]=$fetch['logid'];	
+        header("location:adminhome.php");	
+        }
+
+     if($fetch['status']==1) 
+       {
+       $_SESSION["logid"] =$fetch['logid'];	
+        header("location:company.php");	
+	   }  
+   }	 
+}
+?>
+
+
+?>
+<html>
+<head>
+<link href="css\style1.css" rel="stylesheet">
+</head>
+<body background="(64).jpg">
+<div id="main">
+<center>
+<div id="top">TECH ZONE</div>
+<div id="menu"><center><a href="login_taxi.php">HOME &nbsp&nbsp </a> <a href="signup.html">REGISTER &nbsp&nbsp </a> &nbsp&nbsp </a> <a href="@%#^$&%*%*">ABOUT US </a></center></div>
+<br>
+<br>
+<br>
+<div id="login">
+<h2>Login</h2>
+<form action="#" method="post"
+<label>UserName :</label>
+<input id="name" name="username" placeholder="username" type="text"><br>
+<label>Password :</label>
+<input id="password" name="password" placeholder="**********" type="password"><br><br>
+<input  name="submit" type="submit" value=" Login ">
+</form>
+</center>
+</div>
+</div>
+</body>
+</html>

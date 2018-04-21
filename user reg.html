@@ -1,0 +1,71 @@
+<html>
+<head>
+<link href="css\style1.css" rel="stylesheet">
+</head>
+<body background="(64).jpg">
+<div id="main">
+<center>
+<div id="top"><h2><b><marquee>HERE YOUR CAB</marquee></b></h2></div>
+<div id="menu"><center><a href="home.html">HOME &nbsp&nbsp </a> <a href="signup.html">REGISTER &nbsp&nbsp </a> &nbsp&nbsp </a> <a href="@%#^$&%*%*">ABOUT US </a></center></div>
+<br>
+<br>
+<br>
+<form action="#" method="post">
+<div id="signup">
+<h2 class="smp">USER REGISTRATION<h2>
+<center>
+<font size="4px">
+<label>Name:</label>
+<input id="cname" name="dname"  placeholder="Driver name" type="text" required><br>
+<label>Date of Birth:</label><br>
+<input id="dob" name="Rdate "  placeholder="Date of Birth" type="date" required><br>
+<label>Address:</label><br>
+<textarea placeholder="Address" name="desc" required></textarea><br>
+<label>state:</label>
+<input id="state" name="state"  placeholder="State" type="text" required><br>
+<label>District:</label>
+<input id="district" name="district"  placeholder="district" type="text" required><br>
+<label>Contct Number:</label>
+<input id="phone" name="phone"  placeholder="Phone Number" type="phone" required><br>
+<label>E-mail:</label>
+<input id="email" name="email"  placeholder="Email id" type="email" required><br>
+<label>Photo of signing authority:<label>
+<input type="file" name="img" required><br><br>
+<label>UserName :</label>
+<input id="uname" name="username" placeholder="username" type="text"><br>
+<label>Password :</label>
+<input id="password" name="password" placeholder="**********" type="password"><br>
+<label>Confirm Password :</label>
+<input id="cpassword" name="cpassword" placeholder="**********" type="password"><br><br>
+<input  name="submit" type="submit" value=" REGISTER ">
+<br>
+</font>
+
+</center>
+</div>
+</form>
+     <?php
+        require "connect.php";
+		if(isset($_POST["submit"]))
+	{
+		$cname=$_POST["cname"];
+		$dob=$_POST["dob"];
+		$desc=$_POST["desc"];
+		$state=$_POST["state"];
+		$district=$_POST["district"];;
+		$phone=$_POST["phone"];
+		$email=$_POST["email"];
+		$file=$_POST["file"];;
+		$uname=$_POST["uname"];
+		$password=$_POST["password"];
+		$cpassword=$_POST["cpassword"];
+		$qury="INSERT INTO `cregister`( `cname`, `dob`,`description`, `state`, 'district',`phone`, `email`, 'file', `uname`, `password`, `cpassword`) VALUES ('$cname','$dob','$desc', '$state','$district', '$phone', '$email','$file','$uname', '$password', '$cpassword')";
+		$obj=mysqli_query($conn,$qury);
+		if($obj)
+		{
+			echo"<script>alert('Registration successful...');</script>";
+		}
+    }
+	?>
+<body>
+</html>
